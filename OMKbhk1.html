@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMK Bunda Hati Kudus</title>
+
+<style>
+:root {
+    --navy: #0b1d3a;
+    --navy-dark: #07162e;
+    --navy-light: #142f5f;
+    --gold: #f5c77a;
+    --white: #ffffff;
+    --gray: #f4f6fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(11, 29, 58, 0.85);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+nav.shrink {
+    padding: 10px 40px;
+    background: rgba(7, 22, 46, 0.95);
+}
+
+nav h1 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+nav a {
+    color: var(--white);
+    margin-left: 24px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* ===== HERO ===== */
+.hero {
+    background:
+        radial-gradient(circle at top, rgba(245,199,122,0.15), transparent 60%),
+        linear-gradient(rgba(11,29,58,0.9), rgba(11,29,58,0.9)),
+        url("https://images.unsplash.com/photo-1520975922071-a2c94b96f9c4") center/cover;
+}
+
+.hero h2 {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+}
+
+.hero span {
+    color: var(--gold);
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 30px;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+    transform: translateY(-3px);
+}
+
+/* ===== ABOUT ===== */
+.about {
+    background: linear-gradient(180deg, var(--navy), var(--navy-light));
+}
+
+.about p {
+    max-width: 750px;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+/* ===== ACTIVITIES ===== */
+.activities {
+    background: var(--gray);
+    color: var(--navy);
+}
+
+.activities h2 {
+    margin-bottom: 50px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    transition: 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, var(--gold), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover::before {
+    opacity: 0.15;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+    background:
+        radial-gradient(circle at bottom, rgba(245,199,122,0.15), transparent 60%),
+        var(--navy-dark);
+}
+
+.contact p {
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #050f22;
+    padding: 25px;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ===== ANIMATION ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    nav {
+        padding: 14px 20px;
+    }
+
+    nav a {
+        margin-left: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+    <h1>OMK Bunda Hati Kudus</h1>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">Tentang</a>
+        <a href="#activities">Kegiatan</a>
+        <a href="#contact">Kontak</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div class="container reveal">
+        <h2>Orang Muda Katolik<br><span>Bunda Hati Kudus</span></h2>
+        <p>
+            Bersatu dalam iman, bertumbuh dalam kasih, dan melayani dengan sukacita
+            sebagai generasi muda Katolik.
+        </p>
+        <a href="#about" class="btn">Kenali Kami</a>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container reveal">
+        <h2>Tentang OMK</h2>
+        <p>
+            OMK Bunda Hati Kudus adalah komunitas Orang Muda Katolik yang aktif,
+            kreatif, dan berakar pada iman. Kami hadir untuk bertumbuh bersama
+            dalam doa, persaudaraan, dan pelayanan Gereja.
+        </p>
+    </div>
+</section>
+
+<section class="activities" id="activities">
+    <div class="container reveal">
+        <h2>Kegiatan Kami</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Doa & Iman</h3>
+                <p>Pendalaman iman, doa bersama, adorasi, dan rekoleksi OMK.</p>
+            </div>
+            <div class="card">
+                <h3>Kebersamaan</h3>
+                <p>Sharing, gathering, dan kegiatan persaudaraan OMK.</p>
+            </div>
+            <div class="card">
+                <h3>Pelayanan</h3>
+                <p>Melayani Gereja dan masyarakat dengan semangat kasih.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container reveal">
+        <h2>Hubungi Kami</h2>
+        <p>
+            Mari bertumbuh dan melayani bersama dalam iman Katolik.
+        </p>
+        <a href="mailto:omk@bundahatikudus.org" class="btn">Email Kami</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 OMK Bunda Hati Kudus • Orang Muda Katolik
+</footer>
+
+<script>
+/* NAVBAR SHRINK */
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+    navbar.classList.toggle("shrink", window.scrollY > 80);
+});
+
+/* SCROLL REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    },
+    { threshold: 0.15 }
+);
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
